@@ -2,9 +2,12 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ main ]
+    paths:
+      - 'scheduled-service/**'
+      - '.github/workflows/scheduled-service.yml'
   pull_request:
-    branches: [ main ]
+    paths:
+      - 'scheduled-service/**'
 
 jobs:
   build:
@@ -30,7 +33,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Spotless Check (Linter)
-        run: mvn spotless:check
+        run: mvn -pl scheduled-service spotless:check
 
       - name: Build and test only api-service and scheduled-service
-        run: mvn -pl api-service,scheduled-service clean verify
+        run: mvn -pl scheduled-service clean verify
