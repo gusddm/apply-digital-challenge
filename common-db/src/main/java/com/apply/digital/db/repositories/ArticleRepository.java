@@ -1,6 +1,7 @@
 package com.apply.digital.db.repositories;
 
 import com.apply.digital.db.entities.AlgoliaArticleEntity;
+import jakarta.annotation.Nonnull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -20,6 +21,7 @@ public interface ArticleRepository extends JpaRepository<AlgoliaArticleEntity, L
     @Query("UPDATE AlgoliaArticleEntity a set active = false WHERE a.objectId = :objectId")
     void deleteByObjectId(@Param("objectId") String objectId);
 
+    @Nonnull
     @EntityGraph(attributePaths = {"tags"}) //Prevents LazyInitialization issues
-    Page<AlgoliaArticleEntity> findAll(Specification<AlgoliaArticleEntity> spec, Pageable pageable);
+    Page<AlgoliaArticleEntity> findAll(Specification<AlgoliaArticleEntity> spec, @Nonnull Pageable pageable);
 }

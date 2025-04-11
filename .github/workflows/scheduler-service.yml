@@ -39,8 +39,9 @@ jobs:
         run: mvn -pl common-db,scheduler-service clean verify
 
       - name: Upload to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./scheduler-service/target/site/jacoco/jacoco.xml
           flags: scheduler-service
           name: codecov-scheduler-service
