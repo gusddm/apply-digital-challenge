@@ -37,7 +37,7 @@ public class AlgoliaArticleEntity extends BaseEntity {
     private String storyUrl;
 
     @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
-    private boolean active;
+    private boolean active = true;
 
     @ManyToMany
     @JoinTable(
