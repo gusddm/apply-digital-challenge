@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/apply_digital_db
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  swagger-ui:
+    path: /api/docs
+
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG             # Show generated SQL queries
+    org.hibernate.type.descriptor.sql: TRACE  # Show bind parameter values
+    org.springframework.data: DEBUG      # Optional: Log Spring Data operations
+    org.springframework.transaction: DEBUG  # Optional: Log transaction boundaries
