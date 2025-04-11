@@ -36,4 +36,4 @@ jobs:
         run: mvn -pl scheduler-service spotless:check
 
       - name: Build and test only scheduled-service
-        run: mvn -pl common-db,scheduled-service clean verify
+        run: mvn -pl common-db,scheduler-service clean verify
