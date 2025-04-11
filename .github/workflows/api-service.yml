@@ -37,3 +37,10 @@ jobs:
 
       - name: Build and test only api-service
         run: mvn -pl common-db,api-service clean verify
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./target/site/jacoco/jacoco.xml
+          flags: api-service
+          name: codecov-api-service
