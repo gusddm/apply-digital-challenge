@@ -35,5 +35,5 @@ jobs:
       - name: Spotless Check (Linter)
         run: mvn -pl api-service spotless:check
 
-      - name: Build and test only api-service and scheduled-service
+      - name: Build and test only api-service
         run: mvn -pl common-db,api-service clean verify

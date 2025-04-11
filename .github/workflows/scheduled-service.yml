@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Spotless Check (Linter)
-        run: mvn -pl scheduled-service spotless:check
+        run: mvn -pl scheduler-service spotless:check
 
-      - name: Build and test only api-service and scheduled-service
+      - name: Build and test only scheduled-service
         run: mvn -pl common-db,scheduled-service clean verify
