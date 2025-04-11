@@ -36,4 +36,4 @@ jobs:
         run: mvn -pl api-service spotless:check
 
       - name: Build and test only api-service and scheduled-service
-        run: mvn -pl api-service clean verify
+        run: mvn -pl common-db,api-service clean verify
