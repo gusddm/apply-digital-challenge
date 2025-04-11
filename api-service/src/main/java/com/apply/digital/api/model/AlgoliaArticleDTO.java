@@ -2,6 +2,7 @@ package com.apply.digital.api.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +20,5 @@ public class AlgoliaArticleDTO {
   private String storyTitle;
   private String storyUrl;
   private Instant updatedAt;
-  private Set<String> tags;
+  private Set<String> tags = new HashSet<>();
 }

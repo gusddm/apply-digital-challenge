@@ -8,7 +8,8 @@ import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
-import java.time.*;
+import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
@@ -109,7 +110,6 @@ public class AlgoliaArticleService {
     dto.setStoryUrl(entity.getStoryUrl());
     dto.setTags(
         entity.getTags().stream().map(AlgoliaTagEntity::getName).collect(Collectors.toSet()));
-
     return dto;
   }
 
