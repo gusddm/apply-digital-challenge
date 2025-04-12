@@ -43,6 +43,7 @@ services:
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
       SCHEDULER_FETCH_RATE: 3600000
+      ALGOLIA_JAVA-ARTICLES_URL: https://hn.algolia.com/api/v1/search_by_date?query=java
 
 volumes:
   postgres_data:

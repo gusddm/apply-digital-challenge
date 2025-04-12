@@ -35,10 +35,10 @@ public class ApiController {
       @Parameter(description = "Title of the article")
           @RequestParam(name = "title", required = false)
           String title,
-      @Parameter(description = "Month of creation (1-12)")
+      @Parameter(description = "Month of creation (Jan-Dec)")
           @RequestParam(name = "month", required = false)
           String month,
-      @ParameterObject @PageableDefault Pageable pageable) {
+      @ParameterObject @PageableDefault(value = 5) Pageable pageable) {
 
     Page<AlgoliaArticleDTO> result =
         articleService.findFilteredArticles(author, tags, title, month, pageable);
