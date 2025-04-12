@@ -122,6 +122,7 @@ This will return a response with the access token, like so:
   "token_type": "Bearer",
   "expires_in": 300
 }
+```
 
 ##Consuming the API services
 To make a request to a protected API endpoint, include the access token in the Authorization header like this:
