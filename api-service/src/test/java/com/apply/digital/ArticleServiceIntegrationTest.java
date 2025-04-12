@@ -47,6 +47,12 @@ class ArticleServiceIntegrationTest {
     article.setStoryTitle("Introduction to Spring");
     article.setCreatedAt(Instant.parse("2023-01-15T12:00:00Z"));
 
+    AlgoliaArticleEntity article2 = new AlgoliaArticleEntity();
+    article2.setObjectId("456");
+    article2.setAuthor("anna-integration");
+    article2.setStoryTitle("Introduction to Java");
+    article2.setCreatedAt(Instant.parse("2023-04-15T12:00:00Z"));
+
     var javaTag = new AlgoliaTagEntity();
     javaTag.setName("java");
 
@@ -57,7 +63,7 @@ class ArticleServiceIntegrationTest {
 
     article.setTags(Set.of(javaTag, springTag));
 
-    repository.save(article);
+    repository.saveAll(Set.of(article, article2));
   }
 
   @Test
@@ -74,5 +80,26 @@ class ArticleServiceIntegrationTest {
     assertEquals("alice-integration", dto.getAuthor());
     assertEquals("Introduction to Spring", dto.getStoryTitle());
     assertTrue(dto.getTags().containsAll(List.of("java", "spring")));
+  }
+
+  @Test
+  void shouldNotReturnDeletedArticles() {
+    Pageable pageable = PageRequest.of(0, 10);
+
+    Page<AlgoliaArticleDTO> result =
+            service.findFilteredArticles(
+                    "anna-integration", null, null, "April", pageable);
+
+    assertEquals(1, result.getTotalElements());
+
+    if(result.getContent().stream().findAny().isPresent()) {
+      service.deleteByObjectId(result.getContent().stream().findAny().get().getObjectId());
+    }
+
+    Page<AlgoliaArticleDTO> emptyResult =
+            service.findFilteredArticles(
+                    "anna-integration", null, null, "April", pageable);
+
+    assertTrue(emptyResult.getTotalElements() == 0);
   }
 }
