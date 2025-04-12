@@ -42,7 +42,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/apply_digital_db
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
-      SCHEDULER_FETCH_RATE: 60000
+      SCHEDULER_FETCH_RATE: 3600000
 
 volumes:
   postgres_data:
