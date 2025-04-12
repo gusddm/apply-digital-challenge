@@ -87,18 +87,16 @@ class ArticleServiceIntegrationTest {
     Pageable pageable = PageRequest.of(0, 10);
 
     Page<AlgoliaArticleDTO> result =
-            service.findFilteredArticles(
-                    "anna-integration", null, null, "April", pageable);
+        service.findFilteredArticles("anna-integration", null, null, "April", pageable);
 
     assertEquals(1, result.getTotalElements());
 
-    if(result.getContent().stream().findAny().isPresent()) {
+    if (result.getContent().stream().findAny().isPresent()) {
       service.deleteByObjectId(result.getContent().stream().findAny().get().getObjectId());
     }
 
     Page<AlgoliaArticleDTO> emptyResult =
-            service.findFilteredArticles(
-                    "anna-integration", null, null, "April", pageable);
+        service.findFilteredArticles("anna-integration", null, null, "April", pageable);
 
     assertTrue(emptyResult.getTotalElements() == 0);
   }
