@@ -40,6 +40,7 @@ class ArticleServiceIntegrationTest {
   @BeforeEach
   void setUp() {
     repository.deleteAll();
+    tagRepository.deleteAll();
 
     AlgoliaArticleEntity article = new AlgoliaArticleEntity();
     article.setObjectId("123");
